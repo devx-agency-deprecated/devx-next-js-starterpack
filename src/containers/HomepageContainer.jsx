@@ -4,19 +4,34 @@ import { connect } from 'react-redux'
 
 import TestComponent from '../components/TestComponent'
 
+import GeneralActions from '../redux/GeneralRedux'
+
 type HomepageContainerProps = {}
 
 class HomepageContainer extends React.Component<HomepageContainerProps> {
+  handleTestOnClick = () => {
+    this.props.testIncreaseNumber()
+  }
+
   render() {
+    const { testNumber } = this.props
+
     return (
       <div>
         <h1>DevX starterpack</h1>
-        <TestComponent text="aaa" />
+        <TestComponent text={testNumber} />
+        <button onClick={this.handleTestOnClick}>increase</button>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+  testNumber: state.general.testNumber,
+})
 
-export default connect(mapStateToProps)(HomepageContainer)
+const mapDispatchToProps = {
+  testIncreaseNumber: GeneralActions.testIncreaseNumber,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomepageContainer)
