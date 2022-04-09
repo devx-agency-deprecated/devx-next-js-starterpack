@@ -10,7 +10,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "next": "9.4.4",
     "next-redux-wrapper": "^6.0.2",
     "react": "16.13.1",
